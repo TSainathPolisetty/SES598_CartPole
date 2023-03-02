@@ -13,22 +13,19 @@ g = 9.81
 mass_cart = 20
 mass_pole = 2
 l = 0.5
-Inertia = 0.05;#mass_cart*l*l/12 
+Inertia = mass_cart*l*l/12 
 
-den = mass_cart*mass_pole*l*l + 4*mass_cart*Inertia + 4*mass_pole*Inertia
-
-A23 = -mass_pole*mass_pole*l*l*g/den
-A43 = 2*l*mass_pole*(g*mass_cart+g*mass_pole)/den
-
-B2 = (4*Inertia+mass_pole*l*l)/den
-B4 = -2*l*mass_pole/den
 ###########  X_dot = Ax+Bu #########################
 A = np.matrix([[0,1,0,0],
-        [0, 0, A23, 0],
+        [0, 0, 1, 0],
         [0, 0, 0, 1],
-        [0, 0,  A43, 0]
+        [0, 0,  1, 0]
         ])
-B = np.matrix([0, B2, 0, B4]).T
+
+A[1,2] = -mass_pole*mass_pole*l*l*g/(mass_cart*mass_pole*l*l + 4*mass_cart*Inertia + 4*mass_pole*Inertia);
+A[3,2] = 2*l*mass_pole*(g*mass_cart+g*mass_pole)/(mass_cart*mass_pole*l*l + 4*mass_cart*Inertia + 4*mass_pole*Inertia);
+
+B = np.matrix([0, (4*Inertia+mass_pole*l*l)/(mass_cart*mass_pole*l*l + 4*mass_cart*Inertia + 4*mass_pole*Inertia), 0, -2*l*mass_pole/(mass_cart*mass_pole*l*l + 4*mass_cart*Inertia + 4*mass_pole*Inertia)]).T
 
 C = np.matrix([[1,0,0,0], [0,0,1,0]])
 D = np.matrix([0,0])
