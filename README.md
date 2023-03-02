@@ -1,4 +1,4 @@
-## Inverted Pendulum LQR control
+# Inverted Pendulum LQR control
 
 ## Launch gazebo model using 
 `roslaunch invpend_control load_invpend.launch`
