@@ -27,9 +27,10 @@ Goal is set to
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5TH1VlKVSfs/0.jpg)](https://youtu.be/KuO8ucu_CFo)
 
 
-## Plot of the cart position
 
-![plot](https://user-images.githubusercontent.com/122844128/222620611-cdd8846d-068e-4883-8a39-40afac914270.png)
+
+## Plot of the cart position, velocity, pole position and velocity
+![plot2](https://user-images.githubusercontent.com/122844128/222645277-47719d90-dcbc-4a3c-a21c-cf3f632e1e6e.png)
 
 LQR controller converges on the set goal quite well. 
 
