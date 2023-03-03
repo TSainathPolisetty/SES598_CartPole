@@ -27,19 +27,15 @@ Goal is set to
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5TH1VlKVSfs/0.jpg)](https://youtu.be/KuO8ucu_CFo)
 
 
-## Plot of cart position, velocity and Pole angular position and angular velocity
-![alt txt](invpend_control/scripts/plot1.png "Plot 1")
+## Plot of the cart position
+
+![plot](https://user-images.githubusercontent.com/122844128/222620611-cdd8846d-068e-4883-8a39-40afac914270.png)
+
 LQR controller converges on the set goal quite well. 
 
 Cost matrix choosen is 
 `Q = np.diag([1, 1, 10, 100]);`
-These values are chosen by analizing the sensitivity of each state variable towards keeping the system in the linearized window.
-Angular position of pole needs to be maintained within a narrow bound and angular velocity of pole needs to be maintained low to achieve the first.
-Hence the choice of state cost matrix. 
 
-The R matrix has the same number of rows as are control inputs and the same number of columns as are control inputs.
-The input cost matrix R often has positive values along the diagonal. We can use this matrix to target actuator states where we want low actuator effort by making the corresponding value of R large.
-
-Since controllability of inverted pendulum is of higher priority than conserving actuator effort, a value lower than 1 is chosen.
+The state cost matrix (Q) is chosen based on the sensitivity analysis of each state variable to keep the system in the linearized window. The input cost matrix (R) is chosen to prioritize low actuator effort for specific actuator states. However, for the inverted pendulum system, controllability is more critical than conserving actuator effort. Hence, a lower value is chosen for the R matrix to achieve better controllability.
 `R = np.diag([0.1])`
 
